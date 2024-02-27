@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: cimg/go:1.21.6
+    parallelism: 4
+    resource_class: large
     steps:
       - checkout
       - restore_cache:
@@ -18,6 +20,6 @@ jobs:
             - "/go/pkg/mod"
       - run:
           name: Run tests
-          command: gotestsum --junitfile tmp/unit-tests.xml
+          command: go list ./... | circleci tests run --command "xargs gotestsum --junitfile tmp/unit-tests.xml --format testname --" --split-by=timings --timings-type=name
       - store_test_results:
           path: ./tmp/test-results
