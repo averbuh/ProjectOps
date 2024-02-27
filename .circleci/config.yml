@@ -18,6 +18,6 @@ jobs:
             - "/go/pkg/mod"
       - run:
           name: Run tests
-          command: go test -v ./... > test-results/verbose_test_results.txt
+          command: mkdir -p test-results && go test -v ./... > test-results/verbose_test_results.txt
       - store_test_results:
           path: test-results
