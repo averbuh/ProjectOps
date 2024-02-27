@@ -1,9 +1,10 @@
 package main
 
+import "fmt"
 
 type Article struct {
 	Title string `json:"title"`
-	Body string `json:"body"`
+	Body  string `json:"body"`
 }
 
 type Blog struct {
@@ -11,9 +12,9 @@ type Blog struct {
 }
 
 func New() *Blog {
+	fmt.Println("New blog created")
 	return &Blog{}
 }
-
 
 func (b *Blog) SaveArticle(article Article) {
 	b.Articles = append(b.Articles, article)
