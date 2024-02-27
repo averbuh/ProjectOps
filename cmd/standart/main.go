@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"regexp"
 
-	"github.com/gosimple/slug"
 	"practice.com/http/pkg/repository/recipes"
 )
 
@@ -72,21 +71,21 @@ func (h *RecipesHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *RecipesHandler) CreateRecipe(w http.ResponseWriter, r *http.Request) {
-	var recipe recipes.Recipe
-	if err := json.NewDecoder(r.Body).Decode(&recipe); err != nil {
-		InternalServerErrorHandler(w, r)
-		return
-	}
-	// Convert the name of the recipe into URL friendly string
-	resourceID := slug.Make(recipe.Name)
-	// Call the store to add the recipe
-	if err := h.store.Add(resourceID, recipe); err != nil {
-		InternalServerErrorHandler(w, r)
-		return
-	}
+	// var recipe recipes.Recipe
+	// if err := json.NewDecoder(r.Body).Decode(&recipe); err != nil {
+	// 	InternalServerErrorHandler(w, r)
+	// 	return
+	// }
+	// // Convert the name of the recipe into URL friendly string
+	// resourceID := slug.Make(recipe.Name)
+	// // Call the store to add the recipe
+	// if err := h.store.Add(resourceID, recipe); err != nil {
+	// 	InternalServerErrorHandler(w, r)
+	// 	return
+	// }
 
-	// Set the status code to 200
-	w.WriteHeader(http.StatusOK)
+	// // Set the status code to 200
+	// w.WriteHeader(http.StatusOK)
 }
 
 func (h *RecipesHandler) ListRecipes(w http.ResponseWriter, r *http.Request) {
