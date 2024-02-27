@@ -20,4 +20,4 @@ jobs:
           name: Run tests
           command: gotestsum --junitfile tmp/unit-tests.xml
       - store_test_results:
-          path: /tmp/test-results
+          path: ./tmp/test-results
