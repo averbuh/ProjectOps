@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:
-    working_directory: .
+    working_directory: ProjectOps 
     docker:
       - image: cimg/go:1.21.6
     steps:
