@@ -17,8 +17,6 @@ RUN go get -d -v ./...
 RUN go install -v ./...
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-ping
-
 RUN go build -o standart_api ./cmd/standart
 
 # Optional:
