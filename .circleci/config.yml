@@ -18,6 +18,6 @@ jobs:
             - "/go/pkg/mod"
       - run:
           name: Run tests
-          command: mkdir ./test-results; go test -v ./... > ./test-results/verbose_test_results.txt
+          command: gotestsum --junitfile unit-tests.xml
       - store_test_results:
-          path: ./test-results/verbose_test_results.txt
+          path: /tmp/test-results
