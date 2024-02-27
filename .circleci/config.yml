@@ -23,3 +23,19 @@ jobs:
           command: go list ./... | circleci tests run --command "xargs gotestsum --junitfile tmp/unit-tests.xml --format testname --" --split-by=timings --timings-type=name
       - store_test_results:
           path: ./tmp/test-results
+
+
+
+orbs:
+  aws-ecr: circleci/aws-ecr@8.2.1
+
+workflows:
+  build_and_push_image:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          context: aws-dev
+          create-repo: true
+          dockerfile: Dockerfile
+          path: .
+          repo: circleci-ecr-demo
+          tag: "$CIRCLE_SHA1"
