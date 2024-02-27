@@ -39,7 +39,7 @@ workflows:
           create-repo: true
           dockerfile: Dockerfile
           path: .
-          repo: ${CIRCLE_PROJECT_REPONAME}
+          repo: "$CIRCLE_PROJECT_REPONAME"
           tag: "$CIRCLE_SHA1"
           requires:
             - build_test
