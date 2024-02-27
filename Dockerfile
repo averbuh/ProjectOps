@@ -10,11 +10,16 @@ WORKDIR /app
 # https://docs.docker.com/reference/dockerfile/#copy
 COPY . ./
 
-# Download Go modules
-RUN go mod download
+# Download all the dependencies
+RUN go get -d -v ./...
+
+# Install the package
+RUN go install -v ./...
 
 # Build
 RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-ping
+
+RUN go build -o standart_api ./cmd/standart
 
 # Optional:
 # To bind to a TCP port, runtime parameters must be supplied to the docker command.

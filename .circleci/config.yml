@@ -30,7 +30,7 @@ orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
 
 workflows:
-  
+
   build_and_test_deploy:
     jobs:
       - build_test
