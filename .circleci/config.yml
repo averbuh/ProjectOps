@@ -31,7 +31,7 @@ orbs:
 
 workflows:
   
-  build_test_deploy:
+  build_and_test_deploy:
     jobs:
       - build_test
       - aws-ecr/build-and-push-image:  
