@@ -20,4 +20,4 @@ jobs:
           name: Run tests
           command: mkdir ./test-results; go test -v ./... > ./test-results/verbose_test_results.txt
       - store_test_results:
-          path: test-results
+          path: ./test-results/verbose_test_results.txt
